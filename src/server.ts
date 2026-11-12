@@ -1,6 +1,7 @@
 import fastify from "fastify";
 import cors from "@fastify/cors";
 import { driverRoutes } from "./resources/drivers/routes";
+import { teamRoutes } from "./resources/teams/routes";
 
 const server = fastify({logger: true});
 
@@ -10,7 +11,7 @@ server.register(cors, {
     methods: ["GET", "POST"] // Only these methods can be requested by the origin
 })
 
-server.register(driverRoutes);
+server.register(driverRoutes, teamRoutes);
 
 // Server listener
 server.listen({port: 3333}, () => {
